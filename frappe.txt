@@ -1,0 +1,3 @@
+What i understand till now is that frappe combines all things, such as frontend bakcend database and apis as well
+Frappe itself is full stack
+It lets the developer write less code and handles all the functionalities itself 
