@@ -3,3 +3,76 @@ Frappe itself is full stack
 It lets the developer write less code and handles all the functionalities itself 
 What is different here? they define the metadata and like DB, UI rather than coding the logic
 Its the foundation for ERPnext (Enterprise resource planning)
+
+This is how it works in normal project
+frontend(react) --> api (express/django) --> Backend Logic  ---> Database (sql)
+each and everything which is separated by arrows are written separately 
+
+This is now it works in frappe 
+        DocType (Metadata)
+              ↓
+ ┌────────────┼────────────┐
+ ↓            ↓            ↓
+Database   Backend API    UI
+
+Doctype is a blueprint 
+┌───────────────┐
+│   DocType     │
+│   Student     │
+└───────┬───────┘
+        │
+        ▼
+┌───────────────────────────┐
+│ SQL Table: tabStudent     │
+└───────────────────────────┘
+
+┌───────────────────────────┐
+│ Python Class: Student()   │
+└───────────────────────────┘
+
+┌───────────────────────────┐
+│ REST API                  │
+│ /api/resource/Student     │
+└───────────────────────────┘
+
+┌───────────────────────────┐
+│ UI Form + List View       │
+└───────────────────────────┘
+
+┌───────────────────────────┐
+│ Permissions + Roles       │
+└───────────────────────────┘
+
+This one DocType creates all of these, a sql table, python class, an api in the correct folder etc
+
+
+
+
+ERPNext is a ready-made business system built on top of Frappe.
+
+Now here is what is important, different users would see different modules based on permissions they have
+So say, if these are some of the users --> Accountant, HR, Sales
+If an accountant logs, then he will be able to see the UI and modules related to his work (bacause he only has access to 
+those). On top of that, frappe will take care of what to be shown and what not to be shown for us using the permissions.
+
+
+ERPNext
+ ├─ Selling
+ ├─ Buying
+ ├─ Stock
+ ├─ Accounts
+ ├─ HR
+ ├─ Manufacturing
+ └─ CRM
+
+Each module is the collection of the DocType (blueprint), so, for something like Selling 
+Selling
+ ├─ Customer
+ ├─ Item
+ ├─ Quotation
+ ├─ Sales Order
+ ├─ Delivery Note
+ └─ Sales Invoice
+
+
+ERPNext itself does not run on AI, it uses AI to reduce human effort, not replace logic.
