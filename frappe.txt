@@ -76,3 +76,20 @@ Selling
 
 
 ERPNext itself does not run on AI, it uses AI to reduce human effort, not replace logic.
+
+
+
+How frappe works internally 
+Language stack 
+Backend  → Python
+Frontend → JavaScript
+Templates→ Jinja
+DB       → SQL (MariaDB, PostgresSQL)
+
+Instead of using SQL directly, it is wrapped in python commands in the following way 
+frappe.db.insert()
+frappe.db.get_all()
+frappe.db.set_value()
+
+
+Frappe is a metadata-driven Python framework where DocTypes control database, backend logic, APIs, permissions, and UI through a shared engine.
